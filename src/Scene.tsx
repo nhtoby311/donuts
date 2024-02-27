@@ -1,11 +1,16 @@
 import {
 	OrbitControls,
+	PerformanceMonitor,
 	PerspectiveCamera,
 	useHelper,
 	useVideoTexture,
 } from '@react-three/drei';
 import ModelScene from './ModelScene';
-import { DepthOfField, EffectComposer } from '@react-three/postprocessing';
+import {
+	DepthOfField,
+	EffectComposer,
+	TiltShift2,
+} from '@react-three/postprocessing';
 import MouseCameraRig from './MouseCameraRig';
 import { Perf } from 'r3f-perf';
 import { useEffect, useRef, useState } from 'react';
@@ -17,7 +22,9 @@ import { easing } from 'maath';
 export default function Scene() {
 	const [startAnimate, setStartAnimate] = useState(false);
 
-	const [enableRig, setEnableRig] = useState(null);
+	const [enableRig, setEnableRig] = useState<boolean | null>(null);
+
+	const [graphicsLevel, setGraphicsLevel] = useState<1 | 2>(2);
 
 	useEffect(() => {
 		const timeout = setTimeout(() => {
@@ -28,7 +35,7 @@ export default function Scene() {
 	}, []);
 
 	useEffect(() => {
-		let timeout;
+		let timeout: any;
 
 		if (startAnimate) {
 			timeout = setTimeout(() => {
@@ -46,7 +53,7 @@ export default function Scene() {
 				<meshBasicMaterial attach='material' color='hotpink' />
 			</mesh> */}
 
-			<Perf position={'top-left'} />
+			{/* <Perf position={'top-left'} /> */}
 
 			{/* <PerspectiveCamera
 				makeDefault
@@ -56,6 +63,11 @@ export default function Scene() {
 				position={[1.2, 0.12, -0.02]}
 				rotation={[0, Math.PI / 2, 0]}
 			/> */}
+
+			<PerformanceMonitor
+				onIncline={() => setGraphicsLevel(2)}
+				onDecline={() => setGraphicsLevel(1)}
+			/>
 
 			<CameraMovement start={startAnimate} />
 
@@ -82,22 +94,26 @@ export default function Scene() {
 
 			<ModelScene />
 
-			{/* <EffectComposer>
-				<DepthOfField
-					focusDistance={0.106}
-					focalLength={0.08}
-					bokehScale={3}
-					height={480}
-				/>
-			</EffectComposer> */}
+			<EffectComposer>
+				{graphicsLevel === 2 ? (
+					<DepthOfField
+						focusDistance={0.106}
+						focalLength={0.025}
+						bokehScale={3}
+						height={480}
+					/>
+				) : (
+					<TiltShift2 samples={10} blur={0.12} />
+				)}
+			</EffectComposer>
 
 			{/* <OrbitControls /> */}
 		</>
 	);
 }
 
-function CameraMovement({ start }) {
-	const lookAtRef = useRef();
+function CameraMovement({ start }: any) {
+	const lookAtRef = useRef<any>();
 
 	useFrame(({ camera, clock }, delta) => {
 		if (start) {
