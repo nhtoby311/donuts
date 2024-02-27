@@ -80,7 +80,7 @@ export default function Scene() {
 				//enabled={enableRig === true}
 				startX={1.2}
 				startY={0.12}
-				startZ={0}
+				startZ={-0.02}
 				propotion={0.03}
 				depthAxis='X'
 				delayInteractive={enableRig === true}
@@ -99,7 +99,7 @@ export default function Scene() {
 				{graphicsLevel === 2 ? (
 					<DepthOfField
 						focusDistance={0.106}
-						focalLength={0.025}
+						focalLength={0.02}
 						bokehScale={3}
 						height={480}
 					/>
@@ -122,7 +122,7 @@ function CameraMovement({ start }: any) {
 			easing.damp3(lookAtRef.current.position, [0, 0.1, 0], 2.0, delta);
 
 			//Animate camera
-			easing.damp3(camera.position, [1.2, 0.12, -0.02], 2.0, delta);
+			easing.damp3(camera.position, [0.9, 0.62, -0.02], 2.0, delta);
 		}
 
 		//Make camera look at lookAtRef
@@ -138,10 +138,10 @@ function CameraMovement({ start }: any) {
 
 			<PerspectiveCamera
 				makeDefault
-				fov={15}
+				fov={14}
 				near={0.01}
 				far={10}
-				position={[1.5, 0.3, -0.02]}
+				position={[1.5, 1.2, -0.02]}
 				rotation={[0, Math.PI / 2, 0]}
 			/>
 		</>

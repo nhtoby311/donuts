@@ -18,7 +18,7 @@ function App() {
 		if (globalState === 'landing') {
 			timeout = setTimeout(() => {
 				setRevealText(true);
-			}, 2000);
+			}, 3500);
 		}
 		return () => clearTimeout(timeout);
 	}, [globalState]);
@@ -99,15 +99,19 @@ const Description = styled.p`
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+	margin-top: 5px;
+
+	width: 450px;
 
 	@media (max-width: 768px) {
 		font-size: 16px;
+		width: auto;
 	}
 `;
 
 const StyledAnimateLetter = styled(RevealAnimateLetter)`
 	color: #fff5d0;
-	font-size: 120px;
+	font-size: 140px;
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
@@ -123,7 +127,7 @@ const StyledAnimateLetter = styled(RevealAnimateLetter)`
 `;
 
 const Spacer = styled.div`
-	height: 80px;
+	height: 110px;
 	@media (max-width: 768px) {
 		height: 50px;
 	}
