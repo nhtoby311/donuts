@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@400;500;600;700&display=swap');
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
 }
 
 html,
@@ -15,4 +18,25 @@ body,
 
 #root {
 	position: relative;
+}
+
+.background-canvas {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.fixed-overlay {
+	position: fixed;
+	display: flex;
+	width: 100%;
+	height: 100dvh;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	overflow: hidden;
+
+	z-index: 10;
 }

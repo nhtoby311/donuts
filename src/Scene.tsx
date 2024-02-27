@@ -18,6 +18,7 @@ import { SpotLightHelper } from 'three';
 import { useFrame } from '@react-three/fiber';
 
 import { easing } from 'maath';
+import { useStore } from './store/store';
 
 export default function Scene() {
 	const [startAnimate, setStartAnimate] = useState(false);
@@ -26,13 +27,13 @@ export default function Scene() {
 
 	const [graphicsLevel, setGraphicsLevel] = useState<1 | 2>(2);
 
-	useEffect(() => {
-		const timeout = setTimeout(() => {
-			setStartAnimate(true);
-		}, 3000);
+	const globalState = useStore((state) => state.globalState);
 
-		return () => clearTimeout(timeout);
-	}, []);
+	useEffect(() => {
+		if (globalState === 'landing') {
+			setStartAnimate(true);
+		}
+	}, [globalState]);
 
 	useEffect(() => {
 		let timeout: any;
