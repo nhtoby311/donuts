@@ -54,6 +54,19 @@ export default function Scene() {
 		return () => clearTimeout(timeout);
 	}, [startAnimate]);
 
+	const cameraPosition = useStore((state) => state.cameraPosition);
+
+	useEffect(() => {
+		if (cameraPosition && cameraControlsRef.current) {
+			cameraControlsRef.current.setPosition(
+				cameraPosition[0],
+				cameraPosition[1],
+				cameraPosition[2],
+				true
+			);
+		}
+	}, [cameraPosition]);
+
 	useEffect(() => {
 		if (startAnimate && cameraControlsRef.current) {
 			// Set camera boundaries to keep it within the room

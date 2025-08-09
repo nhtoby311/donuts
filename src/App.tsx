@@ -7,6 +7,7 @@ import RevealAnimate from './RevealAnimate';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import RevealAnimateLetter from './RevealAnimateLetter';
+import OptionsBubble from './OptionsBubble';
 
 function App() {
 	const globalState = useStore((state) => state.globalState);
@@ -55,7 +56,14 @@ function App() {
 						</>
 					)}
 				</Contents>
+				<OptionsBubbleCont>
+					<OptionsBubble />
+				</OptionsBubbleCont>
 			</div>
+
+			<Ref>
+				by <a href='https://www.nhtoby.com'>nhtoby.com</a>
+			</Ref>
 
 			<AnimatePresence mode='wait'>
 				{globalState === 'loading' && <Loading />}
@@ -78,6 +86,8 @@ const Contents = styled.div`
 
 	@media (max-width: 768px) {
 		width: 300px;
+		margin-top: 25px;
+		margin-left: 25px;
 	}
 `;
 
@@ -130,5 +140,22 @@ const Spacer = styled.div`
 	height: 110px;
 	@media (max-width: 768px) {
 		height: 50px;
+	}
+`;
+
+const OptionsBubbleCont = styled.div`
+	position: absolute;
+	bottom: 40px;
+	left: 40px;
+`;
+
+const Ref = styled.div`
+	position: absolute;
+	bottom: 40px;
+	right: 40px;
+	color: white;
+	a {
+		text-decoration: underline;
+		color: white;
 	}
 `;
