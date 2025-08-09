@@ -71,7 +71,7 @@ export default function Scene() {
 		if (startAnimate && cameraControlsRef.current) {
 			// Set camera boundaries to keep it within the room
 			cameraControlsRef.current.minDistance = 0.3; // Minimum distance from target
-			cameraControlsRef.current.maxDistance = 0.8; // Maximum distance from target
+			cameraControlsRef.current.maxDistance = 1; // Maximum distance from target
 			// cameraControlsRef.current.minPolarAngle = 0; // Minimum vertical angle (0 = looking down)
 			// cameraControlsRef.current.maxPolarAngle = Math.PI; // Maximum vertical angle (PI = looking up)
 			// cameraControlsRef.current.minAzimuthAngle = -Math.PI; // Minimum horizontal rotation

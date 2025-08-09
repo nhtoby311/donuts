@@ -57,6 +57,7 @@ export function Model(props: JSX.IntrinsicElements['group']) {
 				receiveShadow
 				geometry={nodes.Plane.geometry}
 				material={materials['Material.002']}
+				material-side={THREE.FrontSide}
 				position={[-0.091, 0.002, -0.001]}
 				scale={2.037}
 			/>
@@ -72,6 +73,7 @@ export function Model(props: JSX.IntrinsicElements['group']) {
 				receiveShadow
 				geometry={nodes.Cube.geometry}
 				material={materials.Material}
+				material-side={THREE.FrontSide}
 				position={[-0.185, 0.388, 0.094]}
 				scale={0.386}
 			/>
