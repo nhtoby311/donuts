@@ -26,7 +26,7 @@ function App() {
 	return (
 		<>
 			<div className='background-canvas'>
-				<Canvas flat camera={{ fov: 20, near: 0.01, far: 10 }}>
+				<Canvas flat camera={{ near: 0.1, far: 2 }}>
 					<Scene />
 				</Canvas>
 			</div>
