@@ -168,8 +168,8 @@ export default function Scene() {
 			<EffectComposer>
 				{graphicsLevel === 2 ? (
 					<DepthOfField
-						focusDistance={0.26}
-						focalLength={0.15}
+						focusDistance={0.17}
+						focalLength={0.098}
 						bokehScale={5.3}
 						height={480}
 					/>
